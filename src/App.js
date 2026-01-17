@@ -1,0 +1,1095 @@
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import {
+  Menu,
+  X,
+  ArrowRight,
+  Phone,
+  Mail,
+  MapPin,
+  Youtube,
+  Image as ImageIcon,
+  Star,
+} from "lucide-react";
+import { ReactComponent as BlobShape } from "./blob-shape.svg";
+
+// Custom SVG Icons
+const WhatsAppIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    className={className}
+  >
+    <path
+      fill="currentColor"
+      d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01m-7.01 15.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.18l-3.12.82l.83-3.04l-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24c2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23m4.52-6.16c-.25-.12-1.47-.72-1.69-.81c-.23-.08-.39-.12-.56.12c-.17.25-.64.81-.78.97c-.14.17-.29.19-.54.06c-.25-.12-1.05-.39-1.99-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.14-.25-.02-.38.11-.51c.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31c-.22.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74c.59.26 1.05.41 1.41.52c.59.19 1.13.16 1.56.1c.48-.07 1.47-.6 1.67-1.18c.21-.58.21-1.07.14-1.18s-.22-.16-.47-.28"
+    />
+  </svg>
+);
+
+const PersonIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    className={className}
+  >
+    <path
+      fill="currentColor"
+      d="M12 12q-1.65 0-2.825-1.175T8 8t1.175-2.825T12 4t2.825 1.175T16 8t-1.175 2.825T12 12m-8 8v-2.8q0-.85.438-1.562T5.6 14.55q1.55-.775 3.15-1.162T12 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T20 17.2V20z"
+    />
+  </svg>
+);
+
+const CalendarIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    className={className}
+  >
+    <g fill="none">
+      <path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+      <path
+        fill="currentColor"
+        d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7zm-5-9a1 1 0 0 1 1 1v1h2a2 2 0 0 1 2 2v3H3V7a2 2 0 0 1 2-2h2V4a1 1 0 0 1 2 0v1h6V4a1 1 0 0 1 1-1"
+      />
+    </g>
+  </svg>
+);
+
+const ChevronLeftIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="12"
+    height="24"
+    viewBox="0 0 12 24"
+    className={className}
+    style={{ transform: "rotate(180deg)" }}
+  >
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M10.157 12.711L4.5 18.368l-1.414-1.414l4.95-4.95l-4.95-4.95L4.5 5.64l5.657 5.657a1 1 0 0 1 0 1.414"
+    />
+  </svg>
+);
+
+const ChevronRightIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="12"
+    height="24"
+    viewBox="0 0 12 24"
+    className={className}
+  >
+    <path
+      fill="currentColor"
+      fillRule="evenodd"
+      d="M10.157 12.711L4.5 18.368l-1.414-1.414l4.95-4.95l-4.95-4.95L4.5 5.64l5.657 5.657a1 1 0 0 1 0 1.414"
+    />
+  </svg>
+);
+
+const InstagramIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    className={className}
+  >
+    <path
+      fill="currentColor"
+      d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3"
+    />
+  </svg>
+);
+
+const TikTokIcon = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="22"
+    viewBox="0 0 256 290"
+    className={className}
+  >
+    <path
+      fill="currentColor"
+      d="M189.72 104.421c18.678 13.345 41.56 21.197 66.273 21.197v-47.53a67 67 0 0 1-13.918-1.456v37.413c-24.711 0-47.59-7.851-66.272-21.195v96.996c0 48.523-39.356 87.855-87.9 87.855c-18.113 0-34.949-5.473-48.934-14.86c15.962 16.313 38.222 26.432 62.848 26.432c48.548 0 87.905-39.332 87.905-87.857v-96.995zm17.17-47.952c-9.546-10.423-15.814-23.893-17.17-38.785v-6.113h-13.189c3.32 18.927 14.644 35.097 30.358 44.898M69.673 225.607a40 40 0 0 1-8.203-24.33c0-22.192 18.001-40.186 40.21-40.186a40.3 40.3 0 0 1 12.197 1.883v-48.593c-4.61-.631-9.262-.9-13.912-.801v37.822a40.3 40.3 0 0 0-12.203-1.882c-22.208 0-40.208 17.992-40.208 40.187c0 15.694 8.997 29.281 22.119 35.9M175.803 92.849c18.683 13.344 41.56 21.195 66.272 21.195V76.631c-13.794-2.937-26.005-10.141-35.186-20.162c-15.715-9.802-27.038-25.972-30.358-44.898h-34.643v189.843c-.079 22.132-18.049 40.052-40.21 40.052c-13.058 0-24.66-6.221-32.007-15.86c-13.12-6.618-22.118-20.206-22.118-35.898c0-22.193 18-40.187 40.208-40.187c4.255 0 8.356.662 12.203 1.882v-37.822c-47.692.985-86.047 39.933-86.047 87.834c0 23.912 9.551 45.589 25.053 61.428c13.985 9.385 30.82 14.86 48.934 14.86c48.545 0 87.9-39.335 87.9-87.857z"
+    />
+  </svg>
+);
+
+// ============================================
+// BRILLIANT INDONESIA LANDING PAGE
+// Modern & Interactive Landing Page
+// Tech Stack: React + Tailwind CSS + Lucide React
+// ============================================
+
+const App = () => {
+  // ==========================================
+  // STATE MANAGEMENT
+  // ==========================================
+
+  // Navbar state
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Hero animation state
+  const [heroAnimated, setHeroAnimated] = useState(false);
+
+  // Counter animation state
+  const [countersAnimated, setCountersAnimated] = useState(false);
+  const [alumniCount, setAlumniCount] = useState(0);
+  const [yearsCount, setYearsCount] = useState(0);
+
+  // Testimonial carousel state
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  // Refs
+  const socialProofRef = useRef(null);
+  const heroRef = useRef(null);
+
+  // ==========================================
+  // DATA
+  // ==========================================
+
+  const programs = [
+    {
+      id: 1,
+      title: "Program bimbel TKA SD, SMP & SMA",
+      description:
+        "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
+      color: "bg-brilliant-yellow",
+    },
+    {
+      id: 2,
+      title: "Program bimbel SNBT & UM PTN",
+      description:
+        "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
+      color: "bg-brilliant-yellow",
+    },
+    {
+      id: 3,
+      title: "Program bimbel Tes CPNS & CPPPK",
+      description:
+        "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
+      color: "bg-brilliant-yellow",
+    },
+    {
+      id: 4,
+      title: "Program bimbel Tes Polisi & TNI",
+      description:
+        "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
+      color: "bg-brilliant-yellow",
+    },
+    {
+      id: 5,
+      title: "Program bimbel Tes Kedinasan",
+      description:
+        "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
+      color: "bg-brilliant-yellow",
+    },
+    {
+      id: 6,
+      title: "Program bimbel Tes BUMN & BUMS",
+      description:
+        "Berbagai macam pilihan program bimbel yang dapat dipilih sesuai kebutuhanmu",
+      color: "bg-brilliant-yellow",
+    },
+  ];
+
+  const testimonials = [
+    {
+      id: 1,
+      name: "Kiagus Muhammad Zaky",
+      quote:
+        "Berkat Brilliant Indonesia, saya berhasil lolos SNBT dan diterima di PTN impian. Metode belajarnya sangat efektif dan mudah dipahami!",
+    },
+    {
+      id: 2,
+      name: "Rafit Zufar",
+      quote:
+        "Mentor-mentornya sangat berpengalaman dan sabar dalam mengajar. Materi yang diberikan lengkap dan up-to-date sesuai kurikulum terbaru.",
+    },
+    {
+      id: 3,
+      name: "Kenzie Muhammad Rizieq",
+      quote:
+        "Program garansi tahun depan membuat saya lebih tenang dalam belajar. Alhamdulillah lolos di percobaan pertama!",
+    },
+    {
+      id: 4,
+      name: "Anisa Putri Ramadhani",
+      quote:
+        "Bimbel terbaik yang pernah saya ikuti! Sistem belajarnya fleksibel, bisa online maupun offline sesuai kebutuhan.",
+    },
+    {
+      id: 5,
+      name: "Muhammad Faisal Akbar",
+      quote:
+        "Lolos CPNS berkat bimbingan dari Brilliant Indonesia. Tryout-nya sangat membantu untuk persiapan ujian sesungguhnya.",
+    },
+    {
+      id: 6,
+      name: "Siti Nurhaliza",
+      quote:
+        "Dari awal tidak percaya diri, sekarang sudah diterima di Kedinasan. Terima kasih Brilliant Indonesia!",
+    },
+  ];
+
+  // ==========================================
+  // EFFECTS & HANDLERS
+  // ==========================================
+
+  // Scroll listener untuk navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.getElementById("hero");
+      if (heroSection) {
+        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+        setIsScrolled(window.scrollY > heroBottom - 100);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Hero entry animation
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHeroAnimated(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Intersection Observer untuk counter animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !countersAnimated) {
+            setCountersAnimated(true);
+            animateCounter(0, 1000, 2000, setAlumniCount);
+            animateCounter(0, 5, 2000, setYearsCount);
+          }
+        });
+      },
+      { threshold: 0.3 },
+    );
+
+    if (socialProofRef.current) {
+      observer.observe(socialProofRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [countersAnimated]);
+
+  // Get visible cards based on screen size
+  const getVisibleCards = useCallback(() => {
+    if (typeof window !== "undefined") {
+      if (window.innerWidth >= 1024) return 3;
+      if (window.innerWidth >= 640) return 2;
+      return 1;
+    }
+    return 3;
+  }, []);
+
+  // Testimonial carousel auto-play
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial(
+        (prev) =>
+          (prev + 1) % Math.ceil(testimonials.length / getVisibleCards()),
+      );
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [testimonials.length, getVisibleCards]);
+
+  // Counter animation function
+  const animateCounter = (start, end, duration, setter) => {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setter(Math.floor(easeOutQuart * (end - start) + start));
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  };
+
+  // Smooth scroll function
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    element?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setIsMobileMenuOpen(false);
+  };
+
+  // Testimonial navigation
+  const nextTestimonial = () => {
+    setCurrentTestimonial(
+      (prev) => (prev + 1) % Math.ceil(testimonials.length / getVisibleCards()),
+    );
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) =>
+      prev === 0
+        ? Math.ceil(testimonials.length / getVisibleCards()) - 1
+        : prev - 1,
+    );
+  };
+
+  // ==========================================
+  // RENDER
+  // ==========================================
+
+  return (
+    <div className="min-h-screen bg-white overflow-x-hidden">
+      {/* ========================================== */}
+      {/* NAVBAR */}
+      {/* ========================================== */}
+      <nav className="fixed top-0 left-0 right-0 z-50 pt-4 px-4">
+        <div
+          className={`max-w-6xl mx-auto rounded-full shadow-2xl transition-all duration-500 ${
+            isScrolled
+              ? "bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg"
+              : "bg-gradient-to-r from-[#FF2E2E] to-[#DF2222]"
+          }`}
+        >
+          <div className="px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16 lg:h-[72px]">
+              {/* Logo */}
+              <div className="flex items-center gap-3">
+                <img
+                  src="/photo/logo.png"
+                  alt="Brilliant Indonesia Logo"
+                  className="w-10 h-10 lg:w-12 lg:h-12 object-contain"
+                />
+                <div className="hidden sm:block">
+                  <div
+                    className={`font-extrabold text-sm lg:text-base leading-tight transition-colors duration-500 ${
+                      isScrolled ? "text-gray-900" : "text-brilliant-purple"
+                    }`}
+                  >
+                    BRILLIANT INDONESIA
+                  </div>
+                  <div
+                    className={`text-[10px] lg:text-xs font-medium leading-tight transition-colors duration-500 ${
+                      isScrolled ? "text-black" : "text-white"
+                    }`}
+                  >
+                    MITRA MERAIH SUKSES BERNILAI
+                  </div>
+                </div>
+              </div>
+
+              {/* Desktop Navigation */}
+              <div className="hidden lg:flex items-center gap-8 xl:gap-10">
+                <button
+                  onClick={() => scrollToSection("programs")}
+                  className={`font-bold text-sm transition-colors duration-500 ${
+                    isScrolled
+                      ? "text-gray-900 hover:text-brilliant-red"
+                      : "text-white hover:text-brilliant-yellow"
+                  }`}
+                >
+                  Produk Kami
+                </button>
+                <button
+                  onClick={() => scrollToSection("testimonials")}
+                  className={`font-bold text-sm transition-colors duration-500 ${
+                    isScrolled
+                      ? "text-gray-900 hover:text-brilliant-red"
+                      : "text-white hover:text-brilliant-yellow"
+                  }`}
+                >
+                  Testimoni
+                </button>
+                <button
+                  onClick={() => scrollToSection("footer")}
+                  className={`font-bold text-sm transition-colors duration-500 ${
+                    isScrolled
+                      ? "text-gray-900 hover:text-brilliant-red"
+                      : "text-white hover:text-brilliant-yellow"
+                  }`}
+                >
+                  Tentang Kami
+                </button>
+              </div>
+
+              {/* CTA Button */}
+              <div className="flex items-center gap-4">
+                <a
+                  href="https://wa.me/6281234567890"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 bg-gradient-to-r from-[#47D029] to-[#2FA91D] text-white px-5 py-2.5 lg:px-6 lg:py-3 rounded-full font-medium text-sm hover:scale-105 hover:brightness-110 transition-all duration-300 shadow-lg"
+                >
+                  <WhatsAppIcon className="w-4 h-4 lg:w-5 lg:h-5" />
+                  <span className="hidden sm:inline font-bold">Chat WA</span>
+                  <span className="sm:hidden">WA</span>
+                </a>
+
+                {/* Mobile Menu Button */}
+                <button
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className={`lg:hidden p-2 transition-colors duration-500 ${
+                    isScrolled ? "text-gray-900" : "text-white"
+                  }`}
+                  aria-label="Toggle menu"
+                >
+                  {isMobileMenuOpen ? (
+                    <X className="w-6 h-6" />
+                  ) : (
+                    <Menu className="w-6 h-6" />
+                  )}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Menu */}
+          <div
+            className={`lg:hidden overflow-hidden transition-all duration-300 ${
+              isMobileMenuOpen ? "max-h-64" : "max-h-0"
+            }`}
+          >
+            <div className="px-6 pb-4 pt-2 flex flex-col gap-3 border-t border-white/10">
+              <button
+                onClick={() => scrollToSection("programs")}
+                className={`font-medium text-left text-sm py-2 transition-colors duration-500 ${
+                  isScrolled
+                    ? "text-gray-900 hover:text-brilliant-red"
+                    : "text-white hover:text-brilliant-yellow"
+                }`}
+              >
+                Produk Kami
+              </button>
+              <button
+                onClick={() => scrollToSection("testimonials")}
+                className={`font-medium text-left text-sm py-2 transition-colors duration-500 ${
+                  isScrolled
+                    ? "text-gray-900 hover:text-brilliant-red"
+                    : "text-white hover:text-brilliant-yellow"
+                }`}
+              >
+                Testimoni
+              </button>
+              <button
+                onClick={() => scrollToSection("footer")}
+                className={`font-medium text-left text-sm py-2 transition-colors duration-500 ${
+                  isScrolled
+                    ? "text-gray-900 hover:text-brilliant-red"
+                    : "text-white hover:text-brilliant-yellow"
+                }`}
+              >
+                Tentang Kami
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* ========================================== */}
+      {/* HERO SECTION */}
+      {/* ========================================== */}
+      <section
+        id="hero"
+        ref={heroRef}
+        className="relative min-h-screen pt-8 lg:pt-8 pb-0 overflow-hidden bg-white"
+      >
+        {/* Background Image with Opacity - Sharp Quality */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: 'url("/photo/kelas.jpg")',
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            opacity: 0.08,
+            imageRendering: "high-quality",
+            WebkitBackfaceVisibility: "hidden",
+            backfaceVisibility: "hidden",
+          }}
+        />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-8">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-8 items-center">
+            {/* Left Content - Takes 55% on desktop */}
+            <div
+              className={`lg:w-[100%] space-y-6 lg:space-y-4 transition-all duration-800 ${
+                heroAnimated
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 -translate-x-24"
+              }`}
+            >
+              {/* Main Heading */}
+              <h1
+                className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold leading-tight"
+                style={{ transitionDelay: "0ms" }}
+              >
+                Lolos Tes{" "}
+                <span className="text-brilliant-red">TKA, SNBT, SKD.</span>
+                <br />
+                Tidak Lolos? Garansi{" "}
+                <span className="text-brilliant-red">Tahun Depan</span>
+              </h1>
+
+              {/* Subheading */}
+              <p
+                className="text-gray-700 text-base lg:text-1xl max-w-xl font-medium"
+                style={{ transitionDelay: "200ms" }}
+              >
+                Bimbingan belajar offline & online terbaik. Dibimbing langsung
+                oleh alumni UGM, ITB, & UNDIP dengan metode praktis tanpa ribet.
+              </p>
+
+              {/* University Logos Placeholder */}
+              <div className="flex items-center gap-4 flex-wrap">
+                {["UGM", "ITB", "UNDIP", "UI", "UNPAD"].map((uni, idx) => (
+                  <div
+                    key={uni}
+                    className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center border border-gray-200"
+                    style={{ transitionDelay: `${300 + idx * 50}ms` }}
+                  >
+                    <span className="text-xs font-bold text-gray-500">
+                      {uni}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA Buttons */}
+              <div
+                className="flex flex-wrap gap-4"
+                style={{ transitionDelay: "400ms" }}
+              >
+                <a
+                  href="https://wa.me/6281234567890"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-2 bg-[#47D029] text-white px-6 py-3 rounded-full font-semibold hover:scale-105 hover:brightness-110 hover:shadow-lg transition-all duration-300"
+                >
+                  <WhatsAppIcon className="w-5 h-5" />
+                  <span>Daftar atau Konsultasi</span>
+                </a>
+                <button
+                  onClick={() => scrollToSection("programs")}
+                  className="group flex items-center gap-4 border-4 border-brilliant-red text-brilliant-red px-6 py-3 rounded-full font-bold hover:bg-brilliant-red hover:text-white transition-all duration-300"
+                >
+                  <span>Lihat Program</span>
+                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+
+            {/* Right Content - 3 People with Blob - Positioned at right edge */}
+            <div
+              className={`lg:w-[60%] lg:ml-auto relative transition-all duration-800 ${
+                heroAnimated
+                  ? "opacity-100 translate-x-0"
+                  : "opacity-0 translate-x-24"
+              }`}
+              style={{ transitionDelay: "200ms" }}
+            >
+              {/* 3 People Container */}
+<div className="relative z-10 w-full h-[36rem] lg:h-[40rem] pb-8">
+
+                {/* SVG Blob Background - Extends far to right edge */}
+                <div className="absolute lg:-right-36 xl:-right-48 top-[65%] -translate-y-1/2 z-0">
+                  <BlobShape
+                    className="w-full h-full object-contain"
+                    style={{ width: "580px", height: "595px" }}
+                  />
+                </div>
+
+                {/* 3 People Container - Overlapping, pushed further right */}
+                <div className="relative z-10 flex items-end justify-end pr-0 lg:-mr-10 xl:-mr-20 pb-8">
+                  {/* Person 1 - Left (Siswa SMA) - Behind */}
+                  <div
+  className="
+    absolute bottom-0
+    left-[8rem] lg:left-[10rem]
+    w-64 h-96
+    sm:w-72 sm:h-[24rem]
+    lg:w-80 lg:h-[36rem]
+    overflow-hidden translate-y-32 filter saturate-200
+  "
+>
+
+  <img
+    src="/photo/1_orang_sma.png"
+    alt="Anak SMA"
+    className="
+      w-full h-full
+      object-cover object-top
+      scale-x-[-1]
+    "
+  />
+</div>
+
+
+                  {/* Person 2 - Center (ASN) - Front and Largest */}
+                  <div
+  className="
+    absolute bottom-0
+    left-[8rem] lg:left-[17rem]
+    z-30
+
+    w-56 sm:w-64 lg:w-72
+    h-[28rem] sm:h-[22rem] lg:h-[26rem]
+
+    overflow-hidden translate-y-40 filter saturate-150
+  "
+>
+
+  <img
+    src="/photo/1_orang_asn.png"
+    alt="ASN"
+    className="
+      w-full h-full
+      object-cover object-top
+    "
+  />
+</div>
+
+
+
+                  {/* Person 3 - Right (Polisi) - Same size as SMA */}
+<div
+  className="
+    w-64 h-96
+    sm:w-72 sm:h-[28rem]
+    lg:w-80 lg:h-[32rem]
+    overflow-hidden
+    flex-shrink-0
+    translate-x-19 lg:translate-x-32 translate-y-40 filter saturate-150
+  "
+>
+  <img
+    src="/photo/1_orang_polisi.png"
+    alt="Polisi"
+    className="
+      w-full h-full
+      object-cover object-top
+      scale-x-[-1]
+    "
+  />
+</div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================== */}
+      {/* SOCIAL PROOF / TRUST INDICATORS */}
+      {/* ========================================== */}
+      <section
+        ref={socialProofRef}
+        className="relative py-16 lg:py-20 bg-gradient-to-r from-brilliant-red via-brilliant-orange to-brilliant-yellow"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-12 relative">
+            {/* Stat 1: Alumni */}
+            <div className="text-center text-white group p-6 rounded-2xl transition-all duration-300 hover:scale-105">
+              <div className="flex justify-center items-center gap-3 mb-2">
+                <PersonIcon className="w-10 h-10 lg:w-12 lg:h-12" />
+                <div className="text-4xl lg:text-5xl font-bold">
+                  {alumniCount}+
+                </div>
+              </div>
+              <div className="text-lg lg:text-xl font-medium opacity-90">
+                Alumni BRILLIANT
+              </div>
+            </div>
+
+            {/* Vertical Divider 1 */}
+            <div className="hidden md:block absolute left-1/3 top-1/2 -translate-x-1/2 -translate-y-1/2 w-0.5 h-32 bg-white"></div>
+
+            {/* Stat 2: Garansi */}
+            <div className="text-center text-white group p-6 rounded-2xl transition-all duration-300 hover:scale-105">
+              <div className="text-xl lg:text-2xl font-bold mb-2">
+                Garansi Tahun Depan
+              </div>
+              <div className="text-lg lg:text-xl font-medium opacity-90">
+                jika Tidak Lolos
+              </div>
+            </div>
+
+            {/* Vertical Divider 2 */}
+            <div className="hidden md:block absolute left-2/3 top-1/2 -translate-x-1/2 -translate-y-1/2 w-0.5 h-32 bg-white"></div>
+
+            {/* Stat 3: Pengalaman */}
+            <div className="text-center text-white group p-6 rounded-2xl transition-all duration-300 hover:scale-105">
+              <div className="flex justify-center items-center gap-3 mb-2">
+                <CalendarIcon className="w-10 h-10 lg:w-12 lg:h-12" />
+                <div className="text-4xl lg:text-5xl font-bold">
+                  {yearsCount}+
+                </div>
+              </div>
+              <div className="text-lg lg:text-xl font-medium opacity-90">
+                Tahun Pengalaman
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================== */}
+      {/* PROGRAM SHOWCASE SECTION */}
+      {/* ========================================== */}
+      <section id="programs" className="py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-12 lg:mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-[#FF0000] to-[#FF7400] bg-clip-text text-transparent">
+                Program Bimbel{" "}
+              </span>
+              <span className="text-brilliant-purple">BRILLIANT</span>
+              <span className="bg-gradient-to-r from-[#FF7400] to-[#FFC100] bg-clip-text text-transparent">
+                {" "}
+                yang Tersedia
+              </span>
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Berbagai macam pilihan program bimbel yang dapat dipilih sesuai
+              kebutuhanmu!
+            </p>
+          </div>
+
+          {/* Programs Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {programs.map((program, index) => (
+              <div
+                key={program.id}
+                className="group bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer card-hover border-2 border-transparent hover:border-brilliant-red/30"
+                style={{
+                  animationDelay: `${index * 100}ms`,
+                }}
+              >
+                {/* Image Container */}
+                <div
+                  className={`relative ${program.color} h-48 lg:h-56 overflow-hidden`}
+                >
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-transparent to-black/10">
+                    <div className="text-center">
+                      <div className="w-20 h-20 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
+                        <ImageIcon className="w-10 h-10 text-white/80" />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Decorative corner */}
+                  <div className="absolute top-0 right-0 w-16 h-16 bg-white/20 rounded-bl-full" />
+                </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-2 group-hover:text-brilliant-red transition-colors text-center">
+                    {program.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm lg:text-base text-center">
+                    {program.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================== */}
+      {/* TESTIMONIAL / SUCCESS STORIES SECTION */}
+      {/* ========================================== */}
+      <section
+        id="testimonials"
+        className="py-16 lg:py-24 bg-gradient-to-b from-[#FFFFFF] to-[#DCDCDC] relative overflow-hidden"
+      >
+        {/* Decorative Blobs
+        <div className="absolute top-0 left-0 w-72 h-72 bg-brilliant-orange/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-brilliant-red/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" /> */}
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-12 lg:mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Mari Dengarkan Mereka yang Sudah Lulus
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Simak alumni-alumni terbaik kami
+            </p>
+          </div>
+
+          {/* Carousel Container */}
+          <div className="relative">
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevTestimonial}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 z-20 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 hover:shadow-xl transition-all duration-300 text-gray-700 hover:text-brilliant-red"
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeftIcon className="w-6 h-6" />
+            </button>
+
+            <button
+              onClick={nextTestimonial}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 z-20 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 hover:shadow-xl transition-all duration-300 text-gray-700 hover:text-brilliant-red"
+              aria-label="Next testimonial"
+            >
+              <ChevronRightIcon className="w-6 h-6" />
+            </button>
+
+            {/* Cards Container */}
+            <div className="overflow-hidden mx-8 lg:mx-16">
+              <div
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{
+                  transform: `translateX(-${currentTestimonial * 100}%)`,
+                }}
+              >
+                {/* Group testimonials by visible cards */}
+                {Array.from({ length: Math.ceil(testimonials.length / 3) }).map(
+                  (_, groupIndex) => (
+                    <div
+                      key={groupIndex}
+                      className="w-full flex-shrink-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                    >
+                      {testimonials
+                        .slice(groupIndex * 3, groupIndex * 3 + 3)
+                        .map((testimonial) => (
+                          <div
+                            key={testimonial.id}
+                            className="bg-white rounded-2xl shadow-lg p-6 lg:p-8 hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+                          >
+                            {/* Avatar */}
+                            <div className="flex justify-center mb-6">
+                              <div className="w-20 h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full border-4 border-white shadow-lg flex items-center justify-center">
+                                <ImageIcon className="w-8 h-8 text-gray-400" />
+                              </div>
+                            </div>
+
+                            {/* Name */}
+                            <h3 className="text-lg font-semibold text-center text-gray-900 mb-4">
+                              {testimonial.name}
+                            </h3>
+
+                            {/* Quote */}
+                            <div className="relative">
+                              <Star className="w-5 h-5 text-brilliant-yellow absolute -top-2 -left-2" />
+                              <p className="text-gray-600 text-sm lg:text-base text-center italic leading-relaxed">
+                                "{testimonial.quote}"
+                              </p>
+                            </div>
+
+                            {/* Rating Stars */}
+                            <div className="flex justify-center mt-4 gap-1">
+                              {[...Array(5)].map((_, i) => (
+                                <Star
+                                  key={i}
+                                  className="w-4 h-4 text-brilliant-yellow fill-brilliant-yellow"
+                                />
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  ),
+                )}
+              </div>
+            </div>
+
+            {/* Dots Indicator */}
+            <div className="flex justify-center mt-8 gap-2">
+              {Array.from({ length: Math.ceil(testimonials.length / 3) }).map(
+                (_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentTestimonial(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentTestimonial
+                        ? "bg-brilliant-red scale-125"
+                        : "bg-gray-300 hover:bg-gray-400"
+                    }`}
+                    aria-label={`Go to testimonial group ${index + 1}`}
+                  />
+                ),
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================== */}
+      {/* CLOSING SECTION */}
+      {/* ========================================== */}
+      <section className="py-16 lg:py-24 bg-gradient-to-b from-[#dcdcdc] to-[#FFFFFF] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          {/* Logo */}
+          <div className="flex justify-center mb-6">
+            <img
+              src="/photo/logo.png"
+              alt="Brilliant Indonesia Logo"
+              className="w-16 h-16 lg:w-20 lg:h-20 object-contain"
+            />
+          </div>
+
+          {/* Heading */}
+          <h2 className="text-3xl lg:text-5xl font-bold text-brilliant-purple mb-4">
+            BRILLIANT INDONESIA
+          </h2>
+          <p className="text-2xl lg:text-3xl font-semibold text-brilliant-yellow mb-12">
+            MITRA MERAIH SUKSES BERNILAI
+          </p>
+
+          {/* Group Photo Placeholder */}
+          <div className="max-w-4xl mx-auto">
+            <div className="aspect-[21/9] bg-gradient-to-br from-gray-200 to-gray-300 rounded-3xl shadow-xl flex items-center justify-center overflow-hidden">
+              <div className="text-center">
+                <div className="flex justify-center gap-4 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="w-16 h-16 bg-gray-400/50 rounded-full"
+                    />
+                  ))}
+                </div>
+                <ImageIcon className="w-12 h-12 text-gray-400 mx-auto mb-2" />
+                <p className="text-gray-500 font-medium">
+                  Foto Keluarga Besar Brilliant Indonesia
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================== */}
+      {/* FOOTER SECTION */}
+      {/* ========================================== */}
+      <footer id="footer" className="bg-brilliant-purple py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
+            {/* Column 1: Branding */}
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <img
+                  src="/photo/logo.png"
+                  alt="Brilliant Indonesia Logo"
+                  className="w-12 h-12 object-contain"
+                />
+                <div>
+                  <h3 className="text-brilliant-yellow font-semibold text-lg">
+                    BRILLIANT INDONESIA
+                  </h3>
+                </div>
+              </div>
+              <p className="text-white/80 text-sm mb-6 leading-relaxed">
+                Bimbingan belajar offline & online terpercaya untuk persiapan
+                PTN, CPNS, Kedinasan, dan Polri. Didirikan sejak tahun 2018.
+              </p>
+              {/* Social Media */}
+              <div>
+                <p className="text-brilliant-yellow font-medium mb-3">
+                  Ikuti Kami
+                </p>
+                <div className="flex gap-3">
+                  <a
+                    href="https://instagram.com/brilliantindonesia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-brilliant-yellow hover:text-brilliant-purple transition-all duration-300"
+                    aria-label="Instagram"
+                  >
+                    <InstagramIcon className="w-5 h-5" />
+                  </a>
+                  <a
+                    href="https://tiktok.com/@brilliantindonesia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-brilliant-yellow hover:text-brilliant-purple transition-all duration-300"
+                    aria-label="TikTok"
+                  >
+                    <TikTokIcon className="w-5 h-5" />
+                  </a>
+                  <a
+                    href="https://youtube.com/brilliantindonesia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-brilliant-yellow hover:text-brilliant-purple transition-all duration-300"
+                    aria-label="YouTube"
+                  >
+                    <Youtube className="w-5 h-5" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Column 2: Contact */}
+            <div>
+              <h3 className="text-brilliant-yellow font-bold text-lg mb-6">
+                Kontak
+              </h3>
+              <div className="space-y-4">
+                <a
+                  href="tel:+6281234567890"
+                  className="flex items-center gap-3 text-white/80 hover:text-white transition-colors group"
+                >
+                  <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-brilliant-yellow group-hover:text-brilliant-purple transition-all">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <span>+62 812-3456-7890</span>
+                </a>
+                <a
+                  href="mailto:info@brilliantindonesia.com"
+                  className="flex items-center gap-3 text-white/80 hover:text-white transition-colors group"
+                >
+                  <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-brilliant-yellow group-hover:text-brilliant-purple transition-all">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <span>info@brilliantindonesia.com</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Column 3: Location */}
+            <div>
+              <h3 className="text-brilliant-yellow font-bold text-lg mb-6">
+                Lokasi
+              </h3>
+              <div className="flex items-start gap-3 text-white/80">
+                <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <MapPin className="w-5 h-5" />
+                </div>
+                <p className="leading-relaxed">
+                  Jl. Pendidikan No. 123, Kelurahan Sukses, Kecamatan Maju, Kota
+                  Metropolitan, Indonesia 12345
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Bar */}
+          <div className="mt-12 pt-8 border-t border-white/20">
+            <p className="text-white/60 text-sm text-center">
+              © 2026 Brilliant Indonesia. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default App;
