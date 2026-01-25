@@ -13,9 +13,10 @@ const Mission = () => {
               style={{ borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%" }}
             >
               <img
-                src="/photo/mission-photo.jpg"
+                src="/photo/misi.jpeg"
                 alt="Our Mission"
                 className="w-full h-full object-cover"
+                style={{ borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%" }}
                 onError={(e) => {
                   e.currentTarget.style.display = "none";
                   e.currentTarget.nextSibling.style.display = "flex";

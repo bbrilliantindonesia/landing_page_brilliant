@@ -46,13 +46,14 @@ const AboutUs = () => {
           {/* Right Image */}
           <div className="relative">
             <div
-              className="glowing-outline aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 shadow-2xl overflow-hidden"
+              className="glowing-outline aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 shadow-2xl overflow-hidden z-20"
               style={{ borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" }}
             >
               <img
-                src="/photo/team-photo.jpg"
+                src="/photo/aboutUs.png"
                 alt="Brilliant Indonesia Team"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover z-10"
+                style={{ borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" }}
                 onError={(e) => {
                   e.currentTarget.style.display = "none";
                   e.currentTarget.nextSibling.style.display = "flex";
