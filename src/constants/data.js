@@ -38,7 +38,7 @@ export const programs = [
     subtitle: "Tes Kedinasan",
     description:
       "Bimbingan intensif untuk tes sekolah kedinasan dengan materi terarah, latihan soal berkala, dan strategi lolos seleksi tahap demi tahap.",
-    image: "Kedinasan.webp",
+    image: "kedinasan.webp",
   },
   {
     id: 6,
@@ -72,7 +72,7 @@ export const testimonials = [
   {
     id: 3,
     name: "Kenzie Muhammad Rizieq",
-    university: "Lulus SNBT ke Universitas Diponegoro",
+    university: "Lulus SNBT ke Universitas Gajah Mada",
     image: "/photo/testimonial/Kenzie.webp",
     quote:
       "Program garansi tahun depan membuat saya lebih tenang dalam belajar. Alhamdulillah lolos di percobaan pertama!",

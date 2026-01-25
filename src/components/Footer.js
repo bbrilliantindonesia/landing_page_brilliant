@@ -75,7 +75,7 @@ const Footer = () => {
                 <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-brilliant-yellow group-hover:text-brilliant-purple transition-all">
                   <Phone className="w-5 h-5" />
                 </div>
-                <span>+62 812-7429-2390</span>
+                <span>+62 836 6636 9621</span>
               </a>
               <a
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=bbrilliantindonesia@gmail.com&su=Kerja Sama&body=Halo%20Brilliant%20Indonesia,%0A%0ASaya%20ingin%20bertanya..."
