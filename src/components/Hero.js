@@ -67,26 +67,26 @@ const Hero = ({ scrollToSection }) => {
       id="hero"
       ref={heroRef}
       className="
-    relative
-    overflow-hidden
-    bg-white
+        relative
+        overflow-hidden
+        bg-white
 
-    /* MOBILE */
-    h-[67rem]
+        /* MOBILE */
+        h-[67rem]
 
-    md:h-[65rem]
+        md:h-[65rem]
 
-    sm:h-[50rem]
+        sm:h-[50rem]
 
-    lg:h-[46rem]
+        lg:h-[46rem]
 
-    xl:min-h-screen
-    xl:h-auto
+        xl:min-h-screen
+        xl:h-auto
 
-    pt-8
-    lg:pt-8
-    pb-0
-  "
+        pt-8
+        lg:pt-8
+        pb-0
+      "
     >
       {/* Background Image with Opacity */}
       <div
@@ -117,7 +117,10 @@ const Hero = ({ scrollToSection }) => {
             <h1
               className="
                   text-[1.40rem] text-center lg:text-left
-                  sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl
+                  sm:text-2xl 
+                  md:text-3xl 
+                  lg:text-4xl 
+                  xl:text-5xl
                   font-extrabold leading-tight
                   max-w-[30rem] sm:max-w-none
                   mx-auto lg:mx-0

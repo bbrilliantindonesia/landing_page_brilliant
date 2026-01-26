@@ -71,7 +71,7 @@ const SocialProof = () => {
               Garansi Tahun Depan
             </div>
             <div className="text-base sm:text-lg lg:text-xl font-medium opacity-90">
-              jika Tidak Lolos
+              jika Tidak Lulus
             </div>
           </div>
 
