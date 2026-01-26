@@ -97,26 +97,24 @@ const Footer = () => {
             <h3 className="text-brilliant-yellow font-bold text-lg mb-6">
               Lokasi
             </h3>
-            <div className="flex items-start gap-3 text-white/80">
-              {/* Tambahkan class 'group' pada pembungkus utama */}
-              <div className="group flex items-start gap-4 cursor-pointer">
-                {/* Icon MapPin dengan efek hover yang Anda minta */}
-                <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1 transition-all group-hover:bg-brilliant-yellow group-hover:text-brilliant-purple">
-                  <MapPin className="w-5 h-5" />
-                </div>
 
-                {/* Alamat yang bisa diklik */}
-                <a
-                  href="https://maps.app.goo.gl/Ezv8Ch7skTqmrsY89"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="leading-relaxed text-white/80 hover:text-white transition-colors"
-                >
-                  Jl. Eka Jaya RT 20, Kel. Talang Bakung Kec.Paal Merah, Kota
-                  Jambi
-                </a>
+            <a
+              href="https://maps.app.goo.gl/Ezv8Ch7skTqmrsY89"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-start gap-4 cursor-pointer text-white/80 hover:text-white transition-colors"
+            >
+              {/* Icon */}
+              <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1 transition-all group-hover:bg-brilliant-yellow group-hover:text-brilliant-purple">
+                <MapPin className="w-5 h-5" />
               </div>
-            </div>
+
+              {/* Alamat */}
+              <span className="leading-relaxed">
+                Jl. Eka Jaya RT 20, Kel. Talang Bakung Kec. Paal Merah, Kota
+                Jambi
+              </span>
+            </a>
           </div>
         </div>
 
