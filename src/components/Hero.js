@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { WhatsAppIcon } from "./Icons";
-import BlobShape from "./BlobShape";
+import BlobShape from "../blob-shape.svg";
 
 const Hero = ({ scrollToSection }) => {
   const [heroAnimated, setHeroAnimated] = useState(false);
@@ -339,9 +339,13 @@ const Hero = ({ scrollToSection }) => {
             <div className="relative z-10 w-full h-[36rem] lg:h-[40rem] pb-8">
               {/* SVG Blob Background */}
               <div className="absolute lg:-right-48 xl:-right-48 lg:top-28 top-[-18%] right-[-30rem] z-0">
-                <BlobShape
+                <img
+                  src={BlobShape}
+                  alt=""
                   className="w-full h-full object-contain"
                   style={{ width: "580px", height: "595px" }}
+                  loading="eager"
+                  aria-hidden="true"
                 />
               </div>
 
