@@ -244,7 +244,7 @@ const Navbar = ({ scrollToSection }) => {
             </button>
             <button
               onClick={() => {
-                scrollToSection("footer");
+                scrollToSection("aboutus");
                 setIsMobileMenuOpen(false);
               }}
               className={`font-medium text-left text-sm py-2 transition-colors duration-500 ${

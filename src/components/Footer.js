@@ -107,7 +107,7 @@ const Footer = () => {
 
                 {/* Alamat yang bisa diklik */}
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=Jl.+Eka+Jaya+RT+20+Kel.+Talang+Bakung+Kec.Paal+Merah+Kota+Jambi"
+                  href="https://maps.app.goo.gl/Ezv8Ch7skTqmrsY89"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="leading-relaxed text-white/80 hover:text-white transition-colors"
