@@ -14,13 +14,13 @@ const CTABanner = () => {
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               {/* Left Content */}
               <div className="p-4 lg:p-8 space-y-4 lg:space-y-6">
-                <h2 className="text-2xl sm:text-3xl lg:text-2xl font-bold font-poppins text-white leading-tight">
+                <h2 className="text-2xl sm:text-3xl lg:text-3xl font-bold text-white leading-tight">
                   Sudah siap untuk{" "}
                   <span className="text-brilliant-purple font-extrabold font-poppins">
                     Daftar?
                   </span>
                 </h2>
-                <p className="text-white text-[12px] lg:text-1xl xl:text-1xl font-medium leading-relaxed">
+                <p className="text-gray-100 text-[12px] lg:text-[14px] xl:text-1xl font-medium leading-relaxed">
                   Mari bergabung bersama Brilliant Indonesia untuk meraih
                   sekolah/perguruan tinggi Impianmu!
                 </p>
@@ -58,8 +58,8 @@ const CTABanner = () => {
                     object-contain
                     -scale-x-100
 
-                    bottom-8        /* iPad Pro (lg) */
-                    xl:bottom-6      /* Desktop besar */
+                    bottom-[29px]        /* iPad Pro (lg) */
+                    xl:bottom-[18px]      /* Desktop besar */
 
                     translate-y-20
                   "
