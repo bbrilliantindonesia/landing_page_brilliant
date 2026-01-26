@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { WhatsAppIcon } from "./Icons";
-import { ReactComponent as BlobShape } from "../blob-shape.svg";
+import BlobShape from "./BlobShape";
 
 const Hero = ({ scrollToSection }) => {
   const [heroAnimated, setHeroAnimated] = useState(false);
@@ -267,6 +267,7 @@ const Hero = ({ scrollToSection }) => {
                     src={`/photo/${uni.fileName}`}
                     alt={`Logo ${uni.name}`}
                     className="w-full h-full object-contain"
+                    loading="lazy"
                     onError={(e) => {
                       e.currentTarget.src = "";
                       e.currentTarget.style.display = "none";
@@ -363,6 +364,7 @@ const Hero = ({ scrollToSection }) => {
                     src="/photo/1_orang_sma.webp"
                     alt="Anak SMA"
                     className="w-full h-full object-cover object-top scale-x-[-1]"
+                    loading="lazy"
                   />
                 </div>
 
@@ -387,6 +389,7 @@ const Hero = ({ scrollToSection }) => {
                     src="/photo/1_orang_asn.webp"
                     alt="ASN"
                     className="w-full h-full object-cover object-top"
+                    loading="lazy"
                   />
                 </div>
 
@@ -410,6 +413,7 @@ const Hero = ({ scrollToSection }) => {
                     src="/photo/1_orang_polisi.webp"
                     alt="Polisi"
                     className="w-full h-full object-cover object-top scale-x-[-1]"
+                    loading="lazy"
                   />
                 </div>
               </div>
