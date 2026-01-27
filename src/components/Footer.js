@@ -22,10 +22,10 @@ const Footer = () => {
                 </h3>
               </div>
             </div>
-            <p className="text-white/80 text-sm mb-6 leading-relaxed">
-              Bimbingan belajar offline & online yang didirikan sejak 10 Maret
-              2015. terpercaya untuk:
-              <ul className="text-white/90 text-sm mb-6 leading-relaxed space-y-2">
+            <p className="text-white text-sm mb-6 leading-relaxed">
+              Bimbingan belajar <span className="text-white font-bold">offline & online</span> yang didirikan 
+              <br/>sejak 10 Maret 2015. terpercaya untuk:
+              <ul className="text-white text-sm mb-6 leading-relaxed space-y-2 mt-2 md:ml-4">
                 {[
                   "Tes TKA SD / SMP / SMA",
                   "Tes SNBT / UM PTN",
