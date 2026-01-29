@@ -133,7 +133,7 @@ export const expandableTestimonials = [
     id: 4,
     name: "Yuriga",
     acceptance: "Lulus CPNS Kemenkumham",
-    image: "/photo/expandTestimonial/Yuriga _CPNSKemenkumham.jpg",
+    image: "/photo/expandTestimonial/Yuriga _CPNSKemenkumham.webp",
     quote:
       "Awalnya ragu bisa tembus Kemenkumham karena saingannya ribuan. Tapi berkat bimbingan intensif dan tryout rutin di sini, skor SKD saya melonjak drastis dan aman sampai tahap akhir.",
   },
