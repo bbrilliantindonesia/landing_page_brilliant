@@ -25,7 +25,7 @@ const Testimonials = () => {
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (sectionRef.current) {
@@ -157,7 +157,10 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-8 lg:mb-16">
-          <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black leading-[1.15] mb-3 lg:mb-4" style={{ fontWeight: 900 }}>
+          <h2
+            className="text-2xl sm:text-3xl lg:text-5xl font-black leading-[1.15] mb-3 lg:mb-4"
+            style={{ fontWeight: 900 }}
+          >
             Mari Dengarkan Mereka yang Sudah Lulus
           </h2>
           <p className="text-gray-600 text-base lg:text-2xl xl:text-lg">
@@ -356,6 +359,27 @@ const Testimonials = () => {
               })}
             </div>
           </div>
+          {/* --- MULAI: MODERN PROGRESS BAR (Segmented Pills) --- */}
+          <div className="absolute bottom-0 left-0 w-full flex justify-center items-center gap-2 mt-4">
+            {Array.from({
+              length: Math.ceil(testimonials.length / getVisibleCards()),
+            }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  // Opsional: Jika Anda punya fungsi untuk jump ke slide tertentu
+                  // setCurrentTestimonial(index);
+                }}
+                className={`h-1.5 rounded-full transition-all duration-500 ease-out ${
+                  currentTestimonial === index
+                    ? "w-8 bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.5)]" // Active State: Lebar, Orange, Glowing
+                    : "w-2 bg-gray-300 hover:bg-gray-400" // Inactive State: Titik kecil, Abu-abu
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+          {/* --- SELESAI: MODERN PROGRESS BAR --- */}
         </div>
 
         {/* Expandable Testimonials Section */}
