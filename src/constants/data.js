@@ -59,7 +59,7 @@ export const testimonials = [
     university: "Lulus CPT Kemenkumham",
     image: "/photo/testimonial/Chandra.webp",
     quote:
-      "Awalnya saya sempet pesimis bisa lolos CPT Kemenkumham karena persaingannya ketat banget dan materinya luas. Terus temen rekomendasiin Brilliant Indonesia dan itu bener-bener game changer sih 🔥 Materinya relevan sama kisi-kisi terbaru, pembahasannya ngena ke inti soal, dan cara ngajarnya gak ngebosenin sama sekali. Yang paling berasa tuh simulasi CAT-nya mirip banget sama tes aslinya, jadi pas hari H udah gak grogi lagi. Dari yang awalnya bingung dan gak tau mau belajar dari mana, sekarang jadi paham strateginya dan lebih pede buat berkembang. Alhamdulillah bisa lolos dan diterima di instansi impian. Highly recommended buat kamu yang mau level up karir, serius.",
+      "Brilliant Indonesia bener-bener game changer 🔥 Awalnya saya cuma coba-coba ikut bimbel, tapi ternyata materinya relevan banget sama soal tes CPT. Pembahasannya ngena, cara ngajarnya santai tapi daging, jadi gak ngebosenin sama sekali. Dari yang awalnya bingung sama materi, sekarang jadi paham dan lebih pede buat berkembang. Highly recommended buat kamu yang mau level up!",
   },
   {
     id: 2,
@@ -67,7 +67,7 @@ export const testimonials = [
     university: "Lulus CPNS Tenaga Kesehatan",
     image: "/photo/testimonial/Rendra.webp",
     quote:
-      "Sebagai alumni kesehatan yang mau ikut CPNS, saya bingung banget harus belajar dari mana karena selain harus nguasain SKD, ada juga materi SKB yang spesifik banget. Untungnya ketemu Brilliant yang punya program khusus untuk tenaga kesehatan. Mentor-mentornya sangat berpengalaman di bidangnya dan sabar banget dalam mengajar, gak cuma sekedar ngejelasin tapi juga kasih tips dan trik ngerjain soal dengan cepat. Materi yang diberikan lengkap banget mulai dari TWK, TIU, TKP sampai materi bidang kesehatan, semuanya up-to-date sesuai kurikulum terbaru CASN. Try out mingguan juga ngebantu banget buat ngukur kemampuan dan adaptasi sama sistem CAT. Alhamdulillah akhirnya bisa lolos dan siap mengabdi sebagai ASN. Makasih banyak Brilliant!",
+      "Mentor-mentornya sangat berpengalaman dan super sabar banget ngajarin sampai paham. Materi yang diberikan lengkap mulai dari TWK, TIU, sampai TKP, semuanya up-to-date sesuai kurikulum terbaru CPNS. Tryout-nya juga rutin, jadi makin terlatih ngerjain soal dengan cepat dan tepat. Alhamdulillah bisa lolos jadi PNS!",
   },
   {
     id: 3,
@@ -83,7 +83,7 @@ export const testimonials = [
     university: "Lulus CPNS Dosen",
     image: "/photo/testimonial/Hafizh.webp",
     quote:
-      "Sebagai calon dosen yang sibuk dengan kuliah S2 dan ngajar, saya butuh bimbel yang bisa nyesuain sama jadwal saya yang padat. Brilliant Indonesia ini bimbel terbaik yang pernah saya ikuti! Sistem belajarnya super fleksibel, bisa online maupun offline sesuai kebutuhan dan waktu luang saya. Materinya juga disesuaikan dengan formasi dosen yang saya tuju, jadi gak perlu belajar yang gak penting. Yang paling saya suka tuh akses ke bank soal dan video pembelajarannya bisa diakses 24/7, jadi kalau malem-malem ada waktu kosong bisa langsung belajar. Mentor-mentornya juga responsif kalau ditanya via grup WhatsApp. Metode belajarnya efisien dan tepat sasaran, cocok buat yang punya kesibukan tinggi kayak saya. Alhamdulillah lolos CPNS Dosen dan sekarang bisa berkarir sesuai passion. Terima kasih Brilliant!",
+      "Bimbel terbaik yang pernah saya ikuti! Sistem belajarnya super fleksibel, bisa online atau offline sesuai kebutuhan kita. Materi khusus untuk seleksi dosen sangat membantu, terutama di bagian tes substansi dan wawasan kebangsaan. Mentor-mentornya juga responsif kalau ada yang mau ditanyain. Pokoknya recommended banget buat yang mau jadi dosen!",
   },
   {
     id: 5,
@@ -99,7 +99,7 @@ export const testimonials = [
     university: "Lulus TNI AD",
     image: "/photo/testimonial/Gifari.webp",
     quote:
-      "Jujur dari awal saya itu gak percaya diri sama sekali buat ikut seleksi TNI AD karena fisik saya pas-pasan dan pengetahuan akademik juga masih kurang. Tapi setelah bergabung dengan Brilliant, semuanya berubah total. Mereka gak cuma fokus ke akademik doang, tapi juga ngasih motivasi dan mental coaching yang bikin saya jadi lebih pede dan pantang menyerah. Materi akademik dan psikotesnya lengkap, latihan soalnya juga mirip banget sama tes aslinya. Yang paling berkesan itu pas mentor-mentor kasih tips dan strategi menghadapi setiap tahapan seleksi, dari administrasi sampai wawancara. Mereka juga bantu nguatin mental biar gak gampang nyerah pas lagi capek latihan fisik. Sekarang sudah resmi diterima di TNI AD dan siap mengabdi untuk negara. Terima kasih banyak Brilliant Indonesia, kalian bener-bener bikin mimpi saya jadi kenyataan!",
+      "Dari awal tidak percaya diri dan merasa kemampuan akademik saya kurang, tapi Brilliant ngasih motivasi dan bimbingan yang tepat. Latihan soal tes akademik dan psikotesnya mirip banget sama yang keluar pas seleksi TNI AD. Sekarang impian saya jadi kenyataan, sudah diterima di TNI AD. Terima kasih banyak Brilliant Indonesia!",
   },
 ];
 
