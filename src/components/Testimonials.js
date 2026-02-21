@@ -164,7 +164,7 @@ const Testimonials = () => {
             Testimoni Alumni Bimbel Brilliant Indonesia
           </h2>
           <p className="text-gray-600 text-base lg:text-2xl xl:text-lg">
-            1000+ siswa sukses dari Jambi dan seluruh Indonesia
+            1000+ siswa sukses dan lulus PTN, CPNS, Kedinasan, TNI, Polri bersama kami
           </p>
         </div>
 

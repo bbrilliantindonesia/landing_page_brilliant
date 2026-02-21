@@ -5,7 +5,7 @@ export const programs = [
     title: "Bimbel TKA",
     subtitle: "SD, SMP & SMA",
     description:
-      "Les privat dan bimbel persiapan TKA untuk SD, SMP, dan SMA di Jambi dan online seluruh Indonesia. Materi terstruktur, latihan rutin, dan pendampingan intensif dari tutor berpengalaman.",
+      "Les privat dan bimbel persiapan TKA untuk SD, SMP, dan SMA di seluruh Indonesia. Materi terstruktur, latihan rutin, dan pendampingan intensif dari tutor berpengalaman.",
     image: "tka.webp",
   },
   {
@@ -19,9 +19,9 @@ export const programs = [
   {
     id: 3,
     title: "Bimbel",
-    subtitle: "CPNS & PPPK",
+    subtitle: "CPNS & CPPPK",
     description:
-      "Kursus persiapan tes CPNS dan PPPK terlengkap di Jambi. Materi TWK, TIU, TKP dengan simulasi CAT terbaru dan pembahasan soal sesuai standar BKN.",
+      "Kursus persiapan tes CPNS dan CPPPK terlengkap di seluruh Indonesia. Materi TWK, TIU, TKP dengan simulasi CAT terbaru dan pembahasan soal sesuai standar BKN.",
     image: "cpns.webp",
   },
   {
@@ -29,7 +29,7 @@ export const programs = [
     title: "Bimbel",
     subtitle: "Polri & TNI",
     description:
-      "Program bimbel khusus persiapan seleksi Polri dan TNI. Meliputi tes akademik, psikotes, dan pembinaan mental. Tersedia offline di Jambi dan online.",
+      "Program bimbel khusus persiapan seleksi Polri dan TNI. Meliputi tes akademik, psikotes, dan pembinaan mental. Tersedia offline di seluruh Indonesia dan online.",
     image: "polisi_tni.webp",
   },
   {

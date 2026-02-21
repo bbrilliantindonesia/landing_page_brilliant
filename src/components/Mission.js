@@ -14,7 +14,7 @@ const Mission = () => {
             >
               <img
                 src="/photo/misi.jpeg"
-                alt="Misi Bimbel Brilliant Indonesia - Les Privat Jambi dan Bimbel Online"
+                alt="Misi Bimbel Brilliant Indonesia - Bimbel Offline dan Online"
                 className="w-full h-full object-cover"
                 style={{ borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%" }}
                 loading="lazy"
@@ -36,7 +36,7 @@ const Mission = () => {
               <span className="text-brilliant-red">Misi Kami</span>: Membimbing Siswa Indonesia Meraih Sukses
             </h2>
             <p className="text-gray-700 text-base sm:text-lg lg:text-xl leading-relaxed">
-              Sebagai bimbel terpercaya yang berawal dari Jambi, kami berkomitmen membantu siswa SD, SMP, dan SMA di seluruh Indonesia untuk meraih impian akademik mereka. Dengan metode pembelajaran teruji dan garansi lulus, kesuksesan Anda adalah prioritas kami.
+              Sebagai bimbel terpercaya, kami berkomitmen membantu siswa SD, SMP, dan SMA di seluruh Indonesia untuk meraih impian akademik mereka. Dengan metode pembelajaran teruji dan garansi lulus, kesuksesan Anda adalah prioritas kami.
             </p>
           </div>
         </div>
